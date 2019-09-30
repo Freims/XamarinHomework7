@@ -1,5 +1,5 @@
 # XamarinHomework7
-This is a simple app to test XAML tips and tricks. TeamHUB lets a teams create and share events with team members, admins can create,
+This is a simple app to test XAML tips and tricks. TeamHUB lets a team create and share events with team members. Admins can create,
 see and delete events. Normal users can only see and delete events.
 
 Some screenshots of the app:
