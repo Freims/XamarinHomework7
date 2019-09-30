@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamarinHomework7.Views.AddNewEventPage">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Label HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" Text="Add a new event"></Label>
+            <Entry 
+                    Placeholder="Event title"
+                    Text="{Binding Event.Title, Mode=TwoWay}"/>
+
+            <Entry 
+                    Placeholder="Description" 
+                   
+                    Text="{Binding Event.Description, Mode=TwoWay}"/>
+
+            <Entry 
+                    Placeholder="Date" 
+                   
+                    Text="{Binding DateString, Mode=TwoWay}"/>
+
+            <Entry 
+                    Placeholder="Place" 
+               
+                    Text="{Binding Event.Place, Mode=TwoWay}"/>
+
+            <Button             
+                    Text="Add event"
+                    Command="{Binding CreateEventCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamarinHomework7.Views.HomePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label HorizontalOptions="Center" FontAttributes="Bold" FontSize="40" Text="{Binding User.Username, StringFormat='Hello, {0}'}"></Label>
+            <Label HorizontalOptions="Center" FontAttributes="Italic" 
+                   FontSize="Subtitle">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label"
+                                 Binding="{Binding User.IsAdmin}"
+                                 Value="True">
+                        <Setter Property="Text" Value="You are an admin. &#10; This means you can add events."/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label"
+                                 Binding="{Binding User.IsAdmin}"
+                                 Value="False">
+                        <Setter Property="Text" Value="You are a normal user. &#10; This means you cannot add events."/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+            <ListView ItemsSource="{Binding Events}"
+                  x:Name="listv"
+                  SelectedItem="{Binding SelectedEvent}"
+                      RowHeight='-1'
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Delete"
+                                       Command="{Binding Path=BindingContext.DeleteElementCommand, Source={x:Reference listv}}"
+                                       CommandParameter="{Binding .}"
+                                       IsDestructive="True"
+                                          >
+                                    
+                                </MenuItem>
+                            </ViewCell.ContextActions>
+                            <StackLayout>
+                                <Label Style="{StaticResource Title}" Text="{Binding Title}"/>
+                                <Label Text="{Binding Description}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button x:Name="loginButton"                
+                    Text="Add an event"
+                    IsVisible="{Binding User.IsAdmin}"
+                    Command="{Binding AddEventCommand}
+                   ">
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

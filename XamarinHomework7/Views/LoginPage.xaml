@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamarinHomework7.Views.LoginPage"
+             xmlns:local="clr-namespace:XamarinHomework7">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Label HorizontalOptions="Center" FontAttributes="Bold" FontSize="40"
+                       Text="{Binding Source={x:Static local:Config.AppName}}"></Label>
+                <Entry 
+                    x:Name="usernameInput" 
+                    Placeholder="Username"
+                    Text="{Binding User.Username, Mode=TwoWay}"/>
+
+                <Entry x:Name="passwordInput" 
+                       Placeholder="Password" 
+                       IsPassword="True"
+                       Text="{Binding User.Password, Mode=TwoWay}"/>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Log in as admin"/>
+                    <Switch OnColor="Orange"
+                    ThumbColor="Green"
+                    IsToggled="{Binding User.IsAdmin}"/>
+                </StackLayout>
+
+                <Button x:Name="loginButton"                
+                    Text="Log in"
+                    Command="{Binding LoginCommand}"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
